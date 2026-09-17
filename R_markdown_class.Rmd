@@ -1,0 +1,50 @@
+---
+title: "Personal Webpage"
+author: "Francisco A. Castro Rivera"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: 
+  prettydoc::html_pretty:
+        theme: cayman
+        highlight: github
+---
+
+<center>
+<img src="3a59f716-cd4b-4fbe-bfff-4a3773c589cd.jpg" width="700" height="400"/>
+
+</center>
+
+Yo, my name is Francisco Castro yo.<br> 
+I'm **_supposed_** to be a masters student... <br>
+But in reality I can't do Nathan
+
+## My life rn:
+- Thesis
+  * SCTLD 
+  * Coral Larvae transcriptomes
+  * *A. palmata* gametes and larvae viruses
+  * ViSUM
+  
+- Jobs
+  * Nautical Club job
+  * Carrucho Job
+  * TA
+  * Social Media (is this even a job)
+  
+  ##########
+  
+  <center>
+  <img src= "fih.jpeg" width=300" height="100"/>
+  
+  </center>
+  
+  ########
+  
+  
+  ## R Code
+  
+```{r echo=T, warning=FALSE, message=FALSE}
+  library(ggplot2)
+  library(palmerpenguins)
+```
+  
+
