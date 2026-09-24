@@ -1,0 +1,106 @@
+---
+title: "R_tutorial_1"
+author: "Francisco A. Castro Rivera"
+date: "`r format(Sys.time(), '%Y-%b-%d. %I:%M %p')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      results = "markup")
+
+```
+
+## R Tutorial #1
+
+### Q1. Create an object called height with the value 175. Print it.
+
+```{r}
+height <- 175
+
+height
+```
+
+### Q2. Calculate the result of 25 * 4 - 10.
+
+```{r}
+25 * 4 - 10
+```
+
+### Q3. Use the function sqrt() to calculate the square root of 81.
+
+```{r}
+sqrt(81)
+```
+
+### Q4. Assign the phrase “R is fun!” to an object called message. 
+
+```{r}
+message <- "R is fun!"
+```
+
+### Create two objects a <- 10 and b <- 5. Calculate their sum and store it in c.
+
+```{r}
+a <- 10
+b <- 5
+a + b
+c <- a + b
+c
+```
+
+### Q6. Test whether 15 is greater than 20.
+
+```{r}
+ if (15 > 20) {
+  print ("15 is greater than 20") 
+  } else{
+  print ("15 is obviously not greater than 20") 
+  }
+
+```
+
+##### Ok it wasn't about creating objects. "else" cannot start at a line by itself.   
+  
+### Q7. Check the class of the object "Hello World"
+
+```{r}
+class("Hello World")
+```
+
+### Q8. Run the following code chunk:
+- Observe the warnings that appear.
+- Modify the chunk options to suppress warnings without changing the code itself.
+
+```{r, warning=FALSE}
+log(-1)
+```
+
+###### warning need to be in the first line of the chunk, not in the body
+
+### Q9. Run the following code chunk: - Observe the messages that appear.
+
+```{r, message=FALSE}
+# Load a package (may produce messages)
+library(dplyr)
+
+# I did {r, message=FALSE} to kill the message
+
+```
+##### I will install package first to get rid of the error. 
+
+
+#### Q10. Create a numeric vector called grades containing the values 80, 90, 75, 95, and 85. Then, use the mean() function to calculate the average grade and store the result in an object called average. Print the result.mean().
+
+```{r}
+grades <- c(80,90,75,95,85)
+
+grades
+
+mean(grades)
+
+average <- mean(grades)
+average
+```
+
+#That is all for the first R tutorial... I think.

@@ -18,7 +18,7 @@ I'm a second year masters student trying to get by <br>
 I'm balancing on the line of keeping stuff together and crashing out <br>
 
 ## R Tutorials:
-### [Assignment 1](R_tutorial1.html)
+### [Assignment 1](homeworks/R_tutorial1.html)
 
 
   <center>
