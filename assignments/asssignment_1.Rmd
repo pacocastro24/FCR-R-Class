@@ -1,0 +1,13 @@
+---
+title: "Assignment_1"
+author: "Francisco A. Castro Rivera"
+date: "`r format(Sys.time(), '%Y-%b-%d. %I:%M %p')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
