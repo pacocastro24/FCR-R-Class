@@ -1,0 +1,123 @@
+---
+title: "r_tutorial2"
+author: "Francisco A. Castro Rivera"
+date: "`r format(Sys.time(), '%Y-%b-%d. %I:%M %p')`"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      results = "markup")
+
+```
+
+## R Tutorial #2
+
+install.packages("gapminder")
+install.packages("dplyr")
+library(gapminder)
+library(dplyr)
+
+
+data(gapminder)
+head(gapminder)
+
+
+data(gapminder)
+gapminder
+View(gapminder)
+
+### Q1. What class is the gapminder dataset? 
+
+
+```{r}
+library(gapminder)
+class(gapminder)
+```
+
+### Q2. Filter a section of gapminder with a life expectancy smaller than 29
+
+```{r, message= FALSE}
+library(gapminder)
+library(dplyr)
+gapminder |> 
+  filter(lifeExp < 29)
+```
+
+### Q3. Filter the dataset for the country Rwanda and for years greater than 1979.
+
+```{r}
+library(gapminder)
+library(dplyr)
+gapminder |> 
+ filter(country == "Rwanda") |> 
+ filter(year > "1979")
+```
+
+### Q4. Create a new dataset from gapminder excluding the column gdpPercap.
+
+```{r}
+library(gapminder, dplyr)
+gapminder |> 
+  select(!(gdpPercap))
+```
+
+### Q5 Arrange the dataset in ascending order of lifeExp.
+
+```{r}
+library(gapminder, dplyr)
+gapminder |> 
+  arrange(lifeExp)
+```
+### Q6 Arrange the dataset in descending order of lifeExp.
+
+```{r}
+library(gapminder, dplyr)
+gapminder |> 
+  arrange(desc(lifeExp))
+```
+
+### Q7 Create a new dataset with only the columns year and lifeExp.
+
+```{r}
+library(gapminder, dplyr)
+subset1 <- 
+  gapminder |> 
+  select(year, lifeExp)
+
+subset1
+
+```
+
+### Q8 Filter the dataset for the country Cambodia and show only the columns year and lifeExp.
+
+```{r}
+library(gapminder, dplyr)
+gapminder |> 
+  filter(country == "Cambodia") |> 
+  select(year, lifeExp)
+
+```
+
+### Q9 Select only the countries in Africa.
+
+```{r}
+library(gapminder, dplyr)
+gapminder |> 
+  filter(continent == "Africa")
+```
+
+### Q10 Create a new column called lifeExp_months that shows life expectancy in months. 
+```{r}
+library(gapminder, dplyr)
+gapminder |> 
+  select(-pop , -year) |> 
+  mutate(lifeExp_months = lifeExp * 12.00)
+
+#Not super sure about this one...
+#I'll have to delete some columns so that the table fits the screen. 
+```
+
+
+
