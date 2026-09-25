@@ -19,6 +19,7 @@ I'm balancing on the line of keeping stuff together and crashing out <br>
 
 ## R Tutorials:
 ### [Assignment 1](R_tutorial1.html)
+### [Assignment 2](assignments/r_tutorial2.html)
 
 
   <center>

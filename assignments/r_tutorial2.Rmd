@@ -116,7 +116,7 @@ gapminder |>
   mutate(lifeExp_months = lifeExp * 12.00)
 
 #Not super sure about this one...
-#I'll have to delete some columns so that the table fits the screen. 
+#I'll have to delete some columns so that the table fits the screen...
 ```
 
 
