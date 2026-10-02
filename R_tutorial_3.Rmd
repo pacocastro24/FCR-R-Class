@@ -64,7 +64,7 @@ data("trees")
 
 shapiro.test(trees$Girth)
 
-#The Shapiro-Wilk test for tree Girth has a p value of 0.08893, hence distribution is normal. 
+#The Shapiro-Wilk test for tree Girth has a p value of 0.08893, hence distribution is normal.
 ```
 
 
