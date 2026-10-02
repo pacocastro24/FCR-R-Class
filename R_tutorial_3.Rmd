@@ -1,0 +1,75 @@
+---
+title: "R_tutorial_3"
+author: "Francisco A. Castro Rivera"
+date: "`r format(Sys.time(), '%Y-%b-%d. %I:%M %p')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      results = "markup")
+```
+
+### Q1. Create a histogram showing the distribution of Girth.
+
+
+```{r}
+library(ggplot2)
+data("trees")
+head(trees)
+
+ggplot(trees, aes(Girth)) +
+geom_histogram()
+
+```
+
+
+### Q2. Create a histogram showing the distribution of Volume.
+
+```{r}
+library(ggplot2)
+data("trees")
+head(trees)
+
+ggplot(trees, aes(Volume)) +
+geom_histogram()
+```
+
+### Q3. Create a scatterplot showing the relationship between Girth and Volume.
+
+```{r}
+library(ggplot2)
+
+ggplot(trees, aes(x = Girth, y = Volume)) + 
+  geom_point()
+
+```
+
+### Q4. Use the Shapiro–Wilk test to assess whether Volume is normally distributed. Report the p-value and state whether the data are normally distributed.
+
+```{r}
+library(ggplot2)
+data("trees")
+
+shapiro.test(trees$Volume)
+
+#The Shapiro-Wilk test shows a p value of 0.003579 for tree volume. Based on this we can say that the data is not normally distributed. p value > 0.05.
+
+```
+### Q5. Repeat the Shapiro–Wilk test for Girth. Report the p-value and state whether Girth is normally distributed.
+
+```{r}
+library(ggplot2)
+data("trees")
+
+shapiro.test(trees$Girth)
+
+#The Shapiro-Wilk test for tree Girth has a p value of 0.08893, hence distribution is normal. 
+```
+
+
+
+
+
+
+
