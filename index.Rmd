@@ -6,32 +6,30 @@ output:
   prettydoc::html_pretty:
         theme: cayman
         highlight: github
+        css: custom.css
 ---
 
 <center>
-<img src="3a59f716-cd4b-4fbe-bfff-4a3773c589cd.jpg" width="700" height="400"/>
+
+Yo, my name is Francisco Castro.<br> 
+I'm a second year masters student trying to get by. <br>
+I'm balancing on the line of keeping things together and crashing out... <br>
 
 </center>
 
-Yo, my name is Francisco Castro.<br> 
-I'm a second year masters student trying to get by <br>
-I'm balancing on the line of keeping stuff together and crashing out <br>
+<hr style="border:1px forest green;">
 
 ## R Tutorials:
 ### [Assignment 1](R_tutorial1.html)
 ### [Assignment 2](assignments/r_tutorial2.html)
 ### [Assignment 3](R_tutorial_3.html)
 
+<hr style="border:1px forest green;">
 
-  <center>
-  <img src= "fih.jpeg" width=300" height="100"/>
-  
-  </center>
-  
-  ###
-  
+## Midterms
 
-  
+### [Midterm 1] 
+
   
 
 
