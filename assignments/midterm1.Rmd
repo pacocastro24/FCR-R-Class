@@ -9,12 +9,107 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Question 1
+# Setup: 
 
-```{r}
+```{r, warning= FALSE, message=FALSE}
+# install.packages("tidyverse")
+# install.packages("dplyr")
+# install.packages("aod")
+
+library(tidyverse)
+library(dplyr)
+library(aod)
+
+# msleep <- glimpse(msleep)
+storms <- storms
+lizards <- lizards
+
+# head(msleep)
+
+# head(storms)
+
+# head(lizards)
+
+```
+
+### msleep questions
+
+```{r, message=FALSE}
+
+### Q1: Use filter() to subset msleep to only animals who are awake for at least 12 hours of the day.
+
+library(dbplyr)
+
+filter(msleep, sleep_total > 12)
+
+### Q2: Use mutate() to create a new column called percent_day_awake that gives the percentage of the day that each species spends awake. Use select() with everything() at the end to verify your calculation.
+
+percent_day_awake <- msleep |> 
+  mutate(percent_day_awake = awake / 24 * 100) |> 
+  select(name, sleep_total, awake, percent_day_awake)
+
+percent_day_awake
+
+# Removed some columns so it's easier to read when I knit.
+
+```
+### Storm Tracking Questions
+
+```{r, warning=FALSE}
+
+### Q4: Use filter() to subset storms to only storms with wind speeds greater than 50 knots, then use arrange() to sort by wind descending.
+
+filter(storms, wind > 50) |> 
+  arrange(desc(wind)) |> 
+  select(year, wind)
 
 
+# I'm selecting these columns because it knits weird if I use all of them. 
+
+```
+
+### Site preference questions
+
+```{r, message=FALSE}
+
+#Setup
+library(dplyr)
+lizards
+# View(lizards)
+
+# Q5: Determine which Site and Diameter combination has the highest total grahami.
+
+# group Site and Diameter, then I'll create a new lizard variable. Getting error because of missing values...
+# na.rm for when missing values is true
+
+library(dplyr)
+
+lizards |> 
+  group_by(Site, Diameter) |> 
+  summarise(total_grahami = sum(grahami, na.rm = TRUE)) |> 
+  arrange(desc(total_grahami))
+
+# Shade and D <=2 has the largest concentration of grahami lizards.
+
+
+# Q6: Create a boxplot showing the distribution of opalinus counts under different light conditions (Sun vs. Shade) using ggplot2.
+
+ggplot(lizards, aes(x = Site, y = opalinus, fill = Site)) +
+  geom_boxplot() +
+  labs(title = "Distribution of opalinus counts by varying light condition",
+       x = "Light condition", y = "Opalinus count") +
+  theme_minimal()
+
+# This is absolutely horrid but it its what it is.
 
 
 ```
+
+
+
+
+
+
+
+
 
