@@ -28,7 +28,7 @@ I'm balancing on the line of keeping things together and crashing out... <br>
 
 ## Midterms
 
-### [Midterm_1](assignments/midterm1.Rmd)
+### [Midterm_1](assignments/midterm1.html)
 
 
 
