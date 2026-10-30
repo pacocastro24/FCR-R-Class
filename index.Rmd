@@ -23,6 +23,7 @@ I'm balancing on the line of keeping things together and crashing out... <br>
 ### [Assignment 1](R_tutorial1.html)
 ### [Assignment 2](assignments/r_tutorial2.html)
 ### [Assignment 3](R_tutorial_3.html)
+### [Assignment 4](assignments/R_tut_4.html)
 
 <hr style="border:1px forest green;">
 
