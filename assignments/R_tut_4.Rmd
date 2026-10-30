@@ -1,0 +1,95 @@
+---
+title: "R tutorial 4"
+author: "Francisco A. Castro Rivera"
+date: "`r format(Sys.time(), '%Y-%b-%d. %I:%M %p')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      results = "markup")
+```
+
+
+#Setup
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(readxl)
+library(lessR) 
+library(BSDA)
+
+df <- read_excel("butterflies_pesticides.xlsx")
+head(df, 6)
+table(df$Group)
+```
+
+# Q1: Normality test 
+
+```{r, warning=FALSE, message=FALSE}
+
+shapiro.test(df$`Wing Length`)
+
+df |>
+  group_by(Group) |>
+  summarise(n = n(),
+            mean = mean(`Wing Length`),
+            sd = sd(`Wing Length`),
+            shapiro_W = shapiro.test(`Wing Length`)$statistic,
+            shapiro_p = shapiro.test(`Wing Length`)$p.value) |>
+  head(6)
+
+ggplot(df, aes(sample = `Wing Length`)) +
+  stat_qq() + stat_qq_line() +
+  facet_wrap(~ Group)
+```
+
+
+
+# Q2: Equality of variances test
+
+
+```{r, message=FALSE}
+
+var.test(`Wing Length` ~ Group, data = df)
+bartlett.test(`Wing Length` ~ Group, data = df)
+
+
+
+
+
+```
+
+# Q3: Statistical test
+
+```{r, message=F}
+
+t.test(`Wing Length` ~ Group, data = df, var.equal = FALSE)
+
+
+m <- df |> group_by(Group) |> summarise(mean = mean(`Wing Length`), sd = sd(`Wing Length`))
+m |> head(6)
+sp <- sqrt(mean(m$sd^2))        
+(m$mean[2] - m$mean[1]) / sp              
+           
+```
+
+# Q4: ggplot 
+
+```{r, message=FALSE}
+
+ggplot(df, aes(x = Group, y = `Wing Length`, fill = Group)) +
+  geom_boxplot(alpha = 0.6, outlier.shape = NA) +
+  geom_jitter(width = 0.15, alpha = 0.6) +
+  stat_summary(fun = mean, geom = "point", shape = 18, size = 4, color = "black") +
+  scale_x_discrete(labels = c("group1" = "Control", "group2" = "Pesticide")) +
+  labs(title = "Wing length of butterflies by pesticide treatment",
+       x = "Treatment", y = "Mean wing length") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+```
+
+# Q5: Conclusions:
+
+The objective of this study was to determine whether exposure to pesticides during the larval stage affects adult butterfly wing length. Mean wing length was measured in 80 butterflies, 40 treated with pesticides (group 2) and 40 untreated controls (group 1). Normality was assessed with Shapiro-Wilk tests and Q-Q plots, and both groups met the assumption (group 1: W = 0.958, p = 0.146; group 2: W = 0.978, p = 0.625). Equality of variances was assessed with an F test, which indicated unequal variances (F = 0.403, p = 0.0055), so a Welch two-sample t-test was used with α = 0.05. Pesticide-treated butterflies had significantly shorter wings (mean = 593.49 ± 51.9 SD) than controls (mean = 632.18 ± 32.9 SD); t(66.03) = 3.98, p = 0.00017, with a mean difference of 38.69 (95% CI: 19.29 to 58.08). The boxplot shows a lower median and a wider spread in the pesticide group. The difference is about 6% of the control mean, and Cohen’s d is about 0.89, a large effect. This suggests that larval pesticide exposure reduces adult wing size, which is likely biologically meaningful because shorter wings can impair flight, dispersal, foraging, and mate finding, and so could reduce fitness. The larger spread in the treated group also suggests that individuals vary in how strongly they respond to the pesticide. Because the data come from one experiment, the result shows an association under these conditions and should be confirmed with replication.
